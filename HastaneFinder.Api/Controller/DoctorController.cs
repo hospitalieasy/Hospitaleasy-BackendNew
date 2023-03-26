@@ -36,10 +36,10 @@ namespace HastaneFinder.Api.Controller
         }
 
 
-        [HttpPut]
-        public Doctor Put([FromBody] Doctor doctor)
+        [HttpPut("{id}")]
+        public Doctor Put(int id, [FromBody] Doctor doctor)
         {
-
+            doctor.id = id;
             return _doctorService.UpdateDoctor(doctor);
 
 

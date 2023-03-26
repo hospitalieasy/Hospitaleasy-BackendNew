@@ -42,36 +42,37 @@ namespace HastaneFinder.DataAcess.Migrations
                 name: "Patients",
                 columns: table => new
                 {
-                    PatientId = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Surname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    BirthDate = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
-                    Telno = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true)
+                    name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    surname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    birthDate = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    email = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    telno = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patients", x => x.PatientId);
+                    table.PrimaryKey("PK_Patients", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Tbl_Doctor",
                 columns: table => new
                 {
-                    DoctorId = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DoctorName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    DoctorSurname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Birthdate = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
-                    Password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
-                    Rate = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true)
+                    name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    surname = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    birthDate = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    email = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    password = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    telno = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    rate = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tbl_Doctor", x => x.DoctorId);
+                    table.PrimaryKey("PK_Tbl_Doctor", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -90,7 +91,7 @@ namespace HastaneFinder.DataAcess.Migrations
                         name: "FK_TestResults_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
-                        principalColumn: "PatientId",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -113,13 +114,13 @@ namespace HastaneFinder.DataAcess.Migrations
                         name: "FK_Appointments_Patients_PatientId",
                         column: x => x.PatientId,
                         principalTable: "Patients",
-                        principalColumn: "PatientId",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Appointments_Tbl_Doctor_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "Tbl_Doctor",
-                        principalColumn: "DoctorId",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

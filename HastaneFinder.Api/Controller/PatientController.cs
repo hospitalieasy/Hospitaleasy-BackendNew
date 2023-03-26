@@ -36,14 +36,14 @@ namespace HastaneFinder.Api.Controller
         }
 
 
-        [HttpPut]
-        public Patient Put([FromBody] Patient patient)
+        [HttpPut("{id}")]
+        public Patient Put(int id, [FromBody] Patient patient)
         {
-
+            // Update the patient with the given ID
+            patient.id = id;
             return _patientService.UpdatePatient(patient);
-
-
         }
+
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

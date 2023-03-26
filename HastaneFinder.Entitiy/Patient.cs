@@ -11,19 +11,19 @@ namespace HastaneFinder.Entitiy
     public class Patient
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PatientId { get; set; }
+        public int id { get; set; }
         [StringLength(20)]
-        public string Name { get; set; }
+        public string name { get; set; }
         [StringLength(20)]
-        public string Surname { get; set; }
+        public string surname { get; set; }
         [StringLength(20)]
-        public string BirthDate { get; set; }
+        public string birthDate { get; set; }
         [StringLength(30)]
-        public string Email { get; set; }
+        public string email { get; set; }
         [StringLength(15)]
-        public string Password { get; set; }
+        public string password { get; set; }
         [StringLength(10)]
-        public string Telno { get; set; }
+        public string telno { get; set; }
 
         public ICollection<TestResults> TestResults { get; set; }
         public ICollection<Appointment> Appointments { get; set; }
