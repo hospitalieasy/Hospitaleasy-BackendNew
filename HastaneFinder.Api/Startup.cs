@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 
 namespace HastaneFinder.Api
 {
@@ -24,6 +25,16 @@ namespace HastaneFinder.Api
         {
             services.AddRazorPages();
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyCorsPolicy", builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,6 +48,8 @@ namespace HastaneFinder.Api
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            app.UseCors("MyCorsPolicy");
 
             app.UseStaticFiles();
 
