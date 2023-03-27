@@ -36,10 +36,10 @@ namespace HastaneFinder.Api.Controller
         }
 
 
-        [HttpPut]
-        public Appointment Put([FromBody] Appointment app)
+        [HttpPut("{id}")]
+        public Appointment Put(int id,[FromBody] Appointment app)
         {
-
+            app.AppId = id;
             return _appService.UpdateAppointment(app);
 
 
