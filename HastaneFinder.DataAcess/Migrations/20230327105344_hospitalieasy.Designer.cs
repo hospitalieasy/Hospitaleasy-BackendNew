@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HastaneFinder.DataAcess.Migrations
 {
     [DbContext(typeof(HastaneDbContext))]
-    [Migration("20230326145024_hospitalieasy")]
+    [Migration("20230327105344_hospitalieasy")]
     partial class hospitalieasy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
