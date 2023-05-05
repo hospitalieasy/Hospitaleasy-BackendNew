@@ -188,13 +188,21 @@ namespace HastaneFinder.DataAcess.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Feedback")
+                    b.Property<string>("Date")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PatientId")
                         .HasColumnType("int");
 
                     b.HasKey("TestId");
+
+                    b.HasIndex("DoctorId");
 
                     b.HasIndex("PatientId");
 
@@ -222,11 +230,19 @@ namespace HastaneFinder.DataAcess.Migrations
 
             modelBuilder.Entity("HastaneFinder.Entitiy.TestResults", b =>
                 {
+                    b.HasOne("HastaneFinder.Entitiy.Doctor", "Doctors")
+                        .WithMany("TestResults")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("HastaneFinder.Entitiy.Patient", "Patients")
                         .WithMany("TestResults")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Doctors");
 
                     b.Navigation("Patients");
                 });
@@ -234,6 +250,8 @@ namespace HastaneFinder.DataAcess.Migrations
             modelBuilder.Entity("HastaneFinder.Entitiy.Doctor", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("TestResults");
                 });
 
             modelBuilder.Entity("HastaneFinder.Entitiy.Patient", b =>

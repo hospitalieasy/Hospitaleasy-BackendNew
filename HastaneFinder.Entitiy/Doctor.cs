@@ -29,7 +29,7 @@ namespace HastaneFinder.Entitiy
 
         public ICollection<Appointment> Appointments { get; set; }
 
-
+        public ICollection<TestResults> TestResults { get; set; }
 
 
     }

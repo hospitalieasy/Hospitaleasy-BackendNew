@@ -48,7 +48,10 @@ namespace HastaneFinder.DataAcess
              .WithOne(o => o.Patients)
              .HasForeignKey(o => o.PatientId);
 
-           
+            modelBuilder.Entity<Doctor>()
+              .HasMany(c => c.TestResults)
+              .WithOne(o => o.Doctors)
+              .HasForeignKey(o => o.DoctorId);
         }
 
     }

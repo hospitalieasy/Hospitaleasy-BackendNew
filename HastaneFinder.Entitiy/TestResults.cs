@@ -13,11 +13,17 @@ namespace HastaneFinder.Entitiy
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TestId { get; set; }
        
-        public string Feedback { get; set; }
-
         public int PatientId { get; set; }
-        public virtual Patient Patients { get; set; }
 
+        public int DoctorId { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public string Date { get; set; }
+
+
+        public virtual Patient Patients { get; set; }
+        public virtual Doctor  Doctors { get; set; }
 
     }
 }
